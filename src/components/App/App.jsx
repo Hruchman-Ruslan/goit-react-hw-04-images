@@ -29,7 +29,7 @@ export const App = () => {
         setImages(prevImages => [...prevImages, ...hits]);
         settoTalImages(totalHits);
       } catch (error) {
-        setError({ error: 'Something went wrong' });
+        setError('Something went wrong');
       } finally {
         setIsLoading(false);
       }
@@ -43,7 +43,7 @@ export const App = () => {
   };
 
   const getQuery = query => {
-    if (!query) {
+    if (query) {
       alert('Change search');
       return;
     }
