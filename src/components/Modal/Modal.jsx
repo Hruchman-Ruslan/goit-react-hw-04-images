@@ -39,7 +39,7 @@ export const Modal = ({ onClose, src, alt }) => {
 
 Modal.propTypes = {
   // handleBackdropClose => ???????????
-  handleBackdropClose: PropTypes.func.isRequired,
+  // handleBackdropClose: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
@@ -80,8 +80,8 @@ Modal.propTypes = {
 //   }
 // }
 
-Modal.propTypes = {
-  handleBackdropClose: PropTypes.func.isRequired,
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-};
+// Modal.propTypes = {
+//   handleBackdropClose: PropTypes.func.isRequired,
+//   src: PropTypes.string.isRequired,
+//   alt: PropTypes.string.isRequired,
+// };
