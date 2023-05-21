@@ -15,7 +15,7 @@ export const App = () => {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [totalImages, settoTalImages] = useState(0);
+  const [totalImages, setTotalImages] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [largeImageURL, setLargeImageURL] = useState('');
   const [tags, setTags] = useState('');
@@ -26,8 +26,20 @@ export const App = () => {
       try {
         setIsLoading(true);
         const { hits, totalHits } = await ImageService.getImages(query, page);
-        setImages(prevImages => [...prevImages, ...hits]);
-        settoTalImages(totalHits);
+
+        const images = hits.map(({ id, tags, webformatURL, largeImageURL }) => {
+          return {
+            id,
+            tags,
+            webformatURL,
+            largeImageURL,
+          };
+        });
+
+        console.log(images);
+
+        setImages(prevImages => [...prevImages, ...images]);
+        setTotalImages(totalHits);
       } catch (error) {
         setError('Something went wrong');
       } finally {
@@ -38,19 +50,15 @@ export const App = () => {
     fetchData();
   }, [query, page]);
 
-  const addPage = () => {
-    setPage(prevPage => prevPage + 1);
-  };
-
   const getQuery = query => {
-    if (query) {
-      alert('Change search');
-      return;
-    }
     setQuery(query);
     setPage(1);
     setImages([]);
-    settoTalImages(0);
+    setTotalImages(0);
+  };
+
+  const addPage = () => {
+    setPage(prevPage => prevPage + 1);
   };
 
   const openModal = (src, alt) => {

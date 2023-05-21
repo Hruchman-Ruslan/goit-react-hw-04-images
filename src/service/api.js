@@ -17,6 +17,6 @@ export const getImages = async (query, page) => {
     params,
   });
 
-  console.log(response.data);
+  // console.log(response.data);
   return response.data;
 };
